@@ -5,13 +5,15 @@ export default {
             inputWord: '',
 
         }
-    }
+    },
+    emits: ['term-serched']
 }
 </script>
 
 <template>
     <form>
-        <input type="text" placeholder='Digita per cercare...' v-model.trim="inputWord">
+        <input type="text" placeholder='Digita per cercare...' v-model.trim="inputWord"
+            @keyup="$emit('term-serched', inputWord)">
     </form>
 </template>
 

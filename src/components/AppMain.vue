@@ -4,13 +4,18 @@ export default {
     components: { SearchBar },
     data() {
         return {}
+    },
+    methods: {
+        onSerchedTerm(term) {
+            console.log(term)
+        }
     }
 }
 </script>
 
 <template>
     <header>
-        <SearchBar />
+        <SearchBar @term-serched="onSerchedTerm()" />
     </header>
 </template>
 
