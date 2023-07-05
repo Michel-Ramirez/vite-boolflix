@@ -1,0 +1,7 @@
+<script>
+// REGISTRARE I PROPS PROVENIENTI DA APP MAIN
+// CREARE IL TAMPLATE STAMPARE IN PAGGINA
+
+</script>
+
+<template></template>
