@@ -1,23 +1,37 @@
 <script>
 import AppMain from './components/AppMain.vue';
 import { store } from './data/store';
+import axios from 'axios';
+
+
+
+
+// CHIAMARE SOTORE
+// CREARE PROPS TO APPMAIN DESTRUTTURANDO GLI ELEMENTI DI CUI HO BISOGNO
+
+
+
+
+
 export default {
   components: { AppMain },
   data() {
     return {
-      queryTerm: '',
-      endpoint: '',
-      api_key: 'da87ac9b75d421e9c6d3a9d1100a0dc4',
+
     }
   },
   methods: {
     onSearchTerm(term) {
-      this.queryTerm = term;
-      this.endpoint = `https://api.themoviedb.org/3//search/movie?api_key=${this.api_key}&query=${this.queryTerm}`;
-      console.log(endpoint);
+      const movieEndpoint = `https://api.themoviedb.org/3//search/movie?api_key=${store.apiKey}&query=${term}`;
+      const seriesEndpoint = `https://api.themoviedb.org/3//search/tv?api_key=${store.apiKey}&query=${term}`;
 
-      axios.get(endpoint).then(res => {
-        store.contentSerched = res.data.results;
+      axios.get(movieEndpoint).then(res => {
+        store.movieList = res.data.results;
+        console.log(store.movieList)
+      });
+      axios.get(seriesEndpoint).then(res => {
+        store.seriesList = res.data.results;
+        console.log(store.seriesList)
       })
     },
 
@@ -27,8 +41,6 @@ export default {
 </script>
 
 <template>
-  {{ queryTerm }}
-  {{ endpoint }}
   <AppMain @term-serched="onSearchTerm" />
 </template>
 
