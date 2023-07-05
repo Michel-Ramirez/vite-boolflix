@@ -11,9 +11,8 @@ export default {
 </script>
 
 <template>
-    <form>
-        <input type="text" placeholder='Digita per cercare...' v-model.trim="inputWord"
-            @keyup="$emit('term-serched', inputWord)">
+    <form @submit.prevent="$emit('term-serched', inputWord)">
+        <input type="text" placeholder='Digita per cercare...' v-model.trim="inputWord">
     </form>
 </template>
 
