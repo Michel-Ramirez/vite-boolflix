@@ -1,12 +1,12 @@
 <script>
 import AppMain from './components/AppMain.vue';
+import AppHeader from './components/AppHeader.vue';
 import { store } from './data/store';
 import axios from 'axios';
 
+// const { key, baseUri, language} = api
 
-
-
-// CHIAMARE SOTORE
+// CHIAMARE STORE
 // CREARE PROPS TO APPMAIN DESTRUTTURANDO GLI ELEMENTI DI CUI HO BISOGNO
 
 
@@ -14,16 +14,12 @@ import axios from 'axios';
 
 
 export default {
-  components: { AppMain },
-  data() {
-    return {
+  components: { AppMain, AppHeader },
 
-    }
-  },
   methods: {
     onSearchTerm(term) {
-      const movieEndpoint = `https://api.themoviedb.org/3//search/movie?api_key=${store.apiKey}&query=${term}`;
-      const seriesEndpoint = `https://api.themoviedb.org/3//search/tv?api_key=${store.apiKey}&query=${term}`;
+      const movieEndpoint = `https://api.themoviedb.org/3/search/movie?api_key=${store.apiKey}&query=${term}&language=it-IT`;
+      const seriesEndpoint = `https://api.themoviedb.org/3/search/tv?api_key=${store.apiKey}&query=${term}&language=it-IT`;
 
       axios.get(movieEndpoint).then(res => {
         store.movieList = res.data.results;
@@ -41,7 +37,10 @@ export default {
 </script>
 
 <template>
-  <AppMain @term-serched="onSearchTerm" />
+  <AppHeader @term-serched="onSearchTerm" />
+  <AppMain />
 </template>
 
-<style></style>
+<style lang="scss">
+@use '../node_modules/bootstrap/scss/bootstrap.scss';
+</style>

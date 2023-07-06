@@ -1,34 +1,19 @@
 <script>
 
+import MoviesSection from './MoviesSection.vue';
+import SeriesSection from './SeriesSection.vue';
 
-
-// RICEVERE I PROPS
-// REGISTRARLI ED INVIARLI A COMPONENT CARD
-
-
-
-import SearchBar from './SearchBar.vue';
 export default {
-    components: { SearchBar, CardComponent },
-    emits: ['term-serched'],
-    data() {
-        return {}
-    },
-    methods: {
-        onSerchedTerm(term) {
-            this.$emit('term-serched', term)
-            console.log(term)
-        }
-    }
+    components: { MoviesSection, SeriesSection },
 }
 </script>
 
 <template>
-    <header>
-        <SearchBar @term-serched="onSerchedTerm" />
-    </header>
     <main>
-        <CardComponent />
+        <div class="container">
+            <MoviesSection />
+            <SeriesSection />
+        </div>
     </main>
 </template>
 
