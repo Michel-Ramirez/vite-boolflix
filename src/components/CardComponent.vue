@@ -1,6 +1,6 @@
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+// // import { farStar } from '@fortawesome/free-solid-svg-icons'
 export default {
     props: {
         item: Object
@@ -47,9 +47,14 @@ export default {
                     <img v-if="hasFlag" :src="flagSrc" :alt="item.original_language">
                     <span v-else>{{ item.original_language }}</span>
                 </li>
-                <li>
-                    <font-awesome-icon :icon="['far', 'star']" class="text-white" />
+
+                <!-- STAMPARE 5 STELLE USANDO UN VFOR, METTENDOLE IN LINEA -->
+
+                <li v-for="star in 5" class="d-flex">
+                    <i class="fa-regular fa-star"></i>
                 </li>
+
+
             </ul>
         </div>
     </div>
@@ -75,7 +80,6 @@ export default {
     }
 }
 
-figure img {}
 
 ul {
     list-style-type: none;
