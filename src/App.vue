@@ -4,15 +4,6 @@ import AppHeader from './components/AppHeader.vue';
 import { store } from './data/store';
 import axios from 'axios';
 
-// const { key, baseUri, language} = api
-
-// CHIAMARE STORE
-// CREARE PROPS TO APPMAIN DESTRUTTURANDO GLI ELEMENTI DI CUI HO BISOGNO
-
-
-
-
-
 export default {
   components: { AppMain, AppHeader },
 
