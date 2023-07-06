@@ -1,6 +1,6 @@
 <script>
-// REGISTRARE I PROPS PROVENIENTI DA APP MAIN
-// CREARE IL TAMPLATE STAMPARE IN PAGGINA
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 export default {
     props: {
         item: Object
@@ -21,9 +21,13 @@ export default {
         flagSrc() {
             const url = new URL(`../assets/img/${this.item.original_language}.png`, import.meta.url);
             console.log(this.item.original_language)
-            return url.href
+            return url.href;
         },
-    }
+        averageVote() {
+            const vote = Math.ceil(this.item.vote_average / 2);
+            return vote;
+        }
+    },
 
 }
 
@@ -43,7 +47,9 @@ export default {
                     <img v-if="hasFlag" :src="flagSrc" :alt="item.original_language">
                     <span v-else>{{ item.original_language }}</span>
                 </li>
-                <li>{{ item.vote_average }}</li>
+                <li>
+                    <font-awesome-icon :icon="['far', 'star']" class="text-white" />
+                </li>
             </ul>
         </div>
     </div>
@@ -71,6 +77,9 @@ export default {
 
 figure img {}
 
+ul {
+    list-style-type: none;
+}
 
 li {
     color: white;
