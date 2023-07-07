@@ -1,14 +1,21 @@
 <script>
 
 import ProductionSection from './ProductionSection.vue';
+import Landing from './Landing.vue';
+import { store } from '../data/store';
+
 
 export default {
-    components: { ProductionSection },
+    components: { ProductionSection, Landing },
+    data() {
+        return { store }
+    }
 }
 </script>
 
 <template>
     <main>
+        <Landing v-if="!store.moviesList.length" />
         <div class="container">
             <ProductionSection title="Movies" collection="moviesList" />
             <ProductionSection title="Series" collection="seriesList" />

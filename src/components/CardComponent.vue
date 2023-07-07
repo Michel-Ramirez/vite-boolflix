@@ -5,7 +5,8 @@ export default {
     },
     data() {
         return {
-            availableFlag: ['it', 'en']
+            availableFlag: ['it', 'en'],
+            // defaultPoster_path: 
         }
     },
     computed: {
