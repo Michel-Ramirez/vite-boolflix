@@ -26,6 +26,11 @@ export default {
             return vote;
         },
     },
+    methods: {
+        iconStyle(star) {
+            return star <= this.getVote ? 'fas' : 'far';
+        }
+    }
 
 }
 </script>
@@ -45,7 +50,7 @@ export default {
                     <span v-else>{{ item.original_language }}</span>
                 </li>
                 <li>
-                    <i v-for="star in 5" :class="star <= getVote ? 'fa-solid' : 'fa-regular'" class="fa-star px-1"></i>
+                    <FontAwesomeIcon v-for="star in 5" :key="star" :icon="[iconStyle(star), 'star']" class="px-1" />
                 </li>
             </ul>
         </div>

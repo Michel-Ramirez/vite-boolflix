@@ -6,6 +6,10 @@ export default {
     components: {
         CardComponent,
     },
+    props: {
+        collection: String,
+        title: String,
+    },
     data() {
         return { store }
     }
@@ -13,9 +17,9 @@ export default {
 </script>
 
 <template>
-    <!-- <h2 class="mb-5 text-white">MOVIES</h2> -->
+    <h2 v-if="store[collection].length" class="mb-5 text-white">{{ title }}</h2>
     <div class="wrapper-movie d-flex">
-        <CardComponent v-for="movie in store.movieList" :item="movie" />
+        <CardComponent v-for="production in store[collection]" :key="production.id" :item="production" />
     </div>
 </template>
 

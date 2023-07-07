@@ -13,12 +13,10 @@ export default {
       const seriesEndpoint = `https://api.themoviedb.org/3/search/tv?api_key=${store.apiKey}&query=${term}&language=it-IT`;
 
       axios.get(movieEndpoint).then(res => {
-        store.movieList = res.data.results;
-        console.log(store.movieList)
+        store.moviesList = res.data.results;
       });
       axios.get(seriesEndpoint).then(res => {
         store.seriesList = res.data.results;
-        console.log(store.seriesList)
       })
     },
 
