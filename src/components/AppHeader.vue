@@ -7,7 +7,6 @@ export default {
     methods: {
         onSerchedTerm(term) {
             this.$emit('term-serched', term)
-            console.log(term)
         }
     }
 }
@@ -17,7 +16,9 @@ export default {
     <header>
         <div class="container">
             <div class="logo">
-                <h1>BOOLFLIX</h1>
+                <a href="home">
+                    <h1>BOOLFLIX</h1>
+                </a>
             </div>
             <SearchBar @term-serched="onSerchedTerm" />
         </div>
@@ -39,5 +40,9 @@ header {
 
 h1 {
     color: red;
+}
+
+a {
+    text-decoration: none;
 }
 </style>

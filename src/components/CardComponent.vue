@@ -6,20 +6,24 @@ export default {
     data() {
         return {
             availableFlag: ['it', 'en'],
-            // defaultPoster_path: 
         }
     },
     computed: {
+        posterDefault() {
+            const url = new URL("../assets/img/boolflix.png", import.meta.url);
+            return url.href;
+        },
         posterSrc() {
             const posterUrl = `http://image.tmdb.org/t/p/w300${this.item.poster_path}`;
-            return posterUrl
+            if (this.item.poster_path === null) {
+                return this.posterDefault;
+            } else return posterUrl
         },
         hasFlag() {
             return this.availableFlag.includes(this.item.original_language);
         },
         flagSrc() {
             const url = new URL(`../assets/img/${this.item.original_language}.png`, import.meta.url);
-            console.log(this.item.original_language)
             return url.href;
         },
         getVote() {
@@ -82,7 +86,6 @@ export default {
     }
 }
 
-
 ul {
     list-style-type: none;
 }
@@ -104,6 +107,12 @@ li {
     .overlay {
         display: block;
     }
+}
+
+figure img {
+    height: 450px;
+    width: 100%;
+    display: block;
 }
 
 .title {

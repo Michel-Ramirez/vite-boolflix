@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-    <h2 v-if="store[collection].length" class="mb-5 text-white">{{ title }}</h2>
+    <h2 v-if="store[collection].length" class="mb-5 pt-5 text-white">{{ title }}</h2>
     <div class="wrapper-movie d-flex">
         <CardComponent v-for="production in store[collection]" :key="production.id" :item="production" />
     </div>
